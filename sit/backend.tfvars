@@ -1,2 +1,2 @@
-bucket = "techbleat-terraform-state-files"
+bucket = "terrakins-state-file"
 key    = "sit/terraform.tfstate"

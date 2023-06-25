@@ -10,8 +10,8 @@ pipeline {
     stages {
         stage ("download code and env config") {
             steps {
-                sh 'git clone https://github.com/techbleat/codebase.git'
-                sh 'git clone https://github.com/techbleat/env.git'
+                sh 'git clone https://github.com/cobidennis/terraCodebase.git'
+                sh 'git clone https://github.com/cobidennis/terraEnv.git'
             }
         }
         stage ('plan') {

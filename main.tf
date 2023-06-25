@@ -1,8 +1,8 @@
 module "create_ec2_from_codebase" {
-    source = "git::https://github.com/techbleat/codebase.git"
-    bucket = var.our_bucket
-    key =  var.our_key
-    sg_name = var.our_sg_name
+    source = "git::https://github.com/cobidennis/terraCodebase.git"
+    bucket = var.bucket
+    key =  var.key
+    sg_name = var.sg_name
 }
 
 
@@ -14,8 +14,8 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = var.our_bucket
-    key    = var.our_key
+    bucket = var.bucket
+    key    = var.key
     region = "eu-west-1"
   }
   required_version = ">= 1.2.0"
@@ -25,6 +25,6 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-variable our_key {}
-variable our_bucket {}
-variable our_sg_name {}
+variable key {}
+variable bucket {}
+variable sg_name {}
