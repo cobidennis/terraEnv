@@ -17,9 +17,9 @@ pipeline {
         stage ('plan') {
              steps {
                 sh '''
-                   cd codebase
-                   terraform init -backend-config=../env/dev/backend.tfvars
-                   terraform plan -var-file ../env/dev/backend.tfvars  -var-file ../env/dev/ec2.tfvars 
+                   cd terraCodebase
+                   terraform init -backend-config=../terraEnv/dev/backend.tfvars
+                   terraform plan -var-file ../terraEnv/dev/backend.tfvars  -var-file ../terraEnv/dev/ec2.tfvars 
                 '''
                 script  {
                     env.NEXT_STEP = input message: 'Implement plan?', ok: 'Implement',
@@ -36,9 +36,9 @@ pipeline {
             }
             steps {
                 sh '''
-                   cd codebase
-                   terraform init -backend-config=../env/dev/backend.tfvars
-                   terraform apply -var-file ../env/dev/backend.tfvars  -var-file ../env/dev/ec2.tfvars -auto-approve
+                   cd terraCodebase
+                   terraform init -backend-config=../terraEnv/dev/backend.tfvars
+                   terraform apply -var-file ../terraEnv/dev/backend.tfvars  -var-file ../terraEnv/dev/ec2.tfvars -auto-approve
                 '''
             }
         }
@@ -50,9 +50,9 @@ pipeline {
             }
             steps {
                 sh '''
-                   cd codebase
-                   terraform init -backend-config=../env/dev/backend.tfvars
-                   terraform destroy -var-file ../env/dev/backend.tfvars  -var-file ../env/dev/ec2.tfvars -auto-approve
+                   cd terraCodebase
+                   terraform init -backend-config=../terraEnv/dev/backend.tfvars
+                   terraform destroy -var-file ../terraEnv/dev/backend.tfvars  -var-file ../terraEnv/dev/ec2.tfvars -auto-approve
                 '''
             }
         }
